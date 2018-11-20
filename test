@@ -1,0 +1,43 @@
+ var idplus = 0;
+
+$(function () {
+
+    $("#journal").click(function () {
+
+        $("#contenu").load("journal.html");
+
+    });
+       
+//---------------Ajout d une ligne avec un nouvel ID ++
+    $("#ajoutLigne").click(function(){       
+        $("#tbody").append(
+            "<tr #ligne>" +
+            "<td><select id='cType" + idplus + "'><option value='A'>A</option><option value='V'>V</option><option value='OD'>OD</option><option value='BQ'>BQ</option><select></td>" +
+            "<td><input id='cDate" + idplus + "' type='date' min='1900-01-01' max='2200-12-31'/></td>" +
+            "<td><input id='cCompte" + idplus + "' type='number' min='0' max='999999999999999999' maxlength='255' placeholder='N° Compte...' title='Digit only'/></td>" +
+            "<td><input id='cLib" + idplus + "' type='text' placeholder='Libellé...' title='Libelle'/></td>" +
+            "<td><input id='cMontantD" + idplus + "' type='number' value='' min='-1' max='999999999999999999' maxlength='255' placeholder='Débit...' title='Montant débit'/></td>" +
+            "<td><input id='cMontantC" + idplus + "'type='number' value='' min='0' max='999999999999999999' maxlength='255' placeholder='Crédit...' title='Montant crédit'/></td>" +
+            "<td><input id='cSolde" + idplus + "'  type='number' value='' min='0' max='999999999999999999' maxlength='255' placeholder='Solde...' title='C-D'/></td>" +
+            "</tr>"
+           
+        );
+        idplus++;
+        console.log(idplus);
+     });
+     
+     $(function () {
+        var leFocus;
+        $('input').focus(function () {
+            leFocus = '#' + $(this).attr('id');
+            $('#status').text(leFocus + ' a le focus');
+            $(leFocus).css('background-color', '#afc');
+        });
+        $('input').blur(function () {
+            leFocus = '#' + $(this).attr('id');
+            $('#status').text(leFocus + ' a perdu le focus');
+            $(leFocus).css('background-color', '#fff');
+        });
+    });
+     
+});
