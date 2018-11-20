@@ -7,7 +7,7 @@ $(function () {
         $("#contenu").load("journal.html");
 
     });
-       
+// Ton code est Genial
 //---------------Ajout d une ligne avec un nouvel ID ++
     $("#ajoutLigne").click(function(){       
         $("#tbody").append(
